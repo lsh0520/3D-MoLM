@@ -12,8 +12,8 @@ Authors: Sihang Li*, Zhiyuan Liu*, Yanchen Luo, Xiang Wang†, Xiangnan He†, K
   <img src="./figures/framework.png" alt="fig1" width="100%"/>
 </p>
 
-* 3D-MoLM is a `<b>`versatile`</b>` molecular LM that can be applied for molecule-text retrieval, molecule captioning, and molecule question-answering tasks.
-* 3D-MoLM employs a 3D molecule-text `<b>`projector`</b>` to bridge the modality gap between a 3D molecular encoder and an LM, enabling the LM to `<b>`perceive 3D molecular structures`</b>`.
+* 3D-MoLM is a **versatile** molecular LM that can be applied for molecule-text retrieval, molecule captioning, and molecule question-answering tasks.
+* 3D-MoLM employs a 3D molecule-text **projector** to bridge the modality gap between a 3D molecular encoder and an LM, enabling the LM to **perceive 3D molecular structures**.
 
 ## Training pipeline
 
@@ -21,22 +21,22 @@ Authors: Sihang Li*, Zhiyuan Liu*, Yanchen Luo, Xiang Wang†, Xiangnan He†, K
   <img src="./figures/train_pipeline.png" alt="fig2" width="100%"/>
 </p>
 
-To tackle the two challenges of `<b>`3D molecule-text alignment`</b>` and `<b>`3D molecule-centric instruction tuning`</b>`, we delineate a three-stage training pipeline for 3D-MoLM, including 1) 3D molecule-text representation learning, 2) 3D molecule-text alignment via text generation, and 3) instruction-based fine-tuning.
+To tackle the two challenges of **3D molecule-text alignment** and **3D molecule-centric instruction tuning**, we delineate a three-stage training pipeline for 3D-MoLM, including 1) 3D molecule-text representation learning, 2) 3D molecule-text alignment via text generation, and 3) instruction-based fine-tuning.
 
 ### 3D Molecule-Text Alignment
 
 3D Molecule-Text Alignment maps 3D molecular representations into the input textual space where the LM can understand.
 
-* `<b>`Data Preparation – PubChem.`</b>` We collect molecular SMILES-text pairs from PubChem, and further employ GPT-3.5 to enrich the less annotated molecular descriptions. Molecular 3D conformations are obtained by running the MMFF algorithm in RDKit. As a result, 316K 3D molecule-text pairs are obtained for the alignment pretraining and downstream tasks of molecule-text retrieval and molecule captioning.
-* `<b><span>`Stage 1: 3D Molecule-Text Representation Learning`</b>` cultivates Q-Former’s ability to extract molecular features that resonate profoundly with the corresponding tex`</li>`
-* `<b><span>`Stage 2: 3D Molecule-Text Alignment via Generative Learning`</b>` connect the Q-Former with the LM to leverage the LM’s language generation capability, where the molecular representations extracted by the Q-Former serve as 1D soft prompts comprehensible to the LM.
+* **Data Preparation – PubChem.** We collect molecular SMILES-text pairs from PubChem, and further employ GPT-3.5 to enrich the less annotated molecular descriptions. Molecular 3D conformations are obtained by running the MMFF algorithm in RDKit. As a result, 316K 3D molecule-text pairs are obtained for the alignment pretraining and downstream tasks of molecule-text retrieval and molecule captioning.
+* **Stage 1: 3D Molecule-Text Representation Learning** cultivates Q-Former’s ability to extract molecular features that resonate profoundly with the corresponding text
+* **Stage 2: 3D Molecule-Text Alignment via Generative Learning** connect the Q-Former with the LM to leverage the LM’s language generation capability, where the molecular representations extracted by the Q-Former serve as 1D soft prompts comprehensible to the LM.
 
 ### 3D Molecule-centric Instruction Tuning
 
 3D Molecule-centric Instruction Tuning fine-tunes the model to follow human instructions on 3D molecule relevant tasks.
 
-* `<b>`Data Preparation – 3D-MoIT.`</b>` We construct 3D-MoIT by sourcing data from the PubChem and PubChemQC databases, including both computed molecular properties and descriptive texts that characterize molecule properties in numerical values and free texts, respectively.
-* `<b><span>`Stage 3: Instruction-based Fine-tuning`</b>` enhances the ability to follow various instructions and improves the understanding of 3D molecular structures, especially in recognizing 3D-dependent properties
+* **Data Preparation – 3D-MoIT.** We construct 3D-MoIT by sourcing data from the PubChem and PubChemQC databases, including both computed molecular properties and descriptive texts that characterize molecule properties in numerical values and free texts, respectively.
+* **Stage 3: Instruction-based Fine-tuning** enhances the ability to follow various instructions and improves the understanding of 3D molecular structures, especially in recognizing 3D-dependent properties
 
 ## Demonstration
 
@@ -81,8 +81,8 @@ pip install -r requirements.txt
 
 ### Prerequisites
 
-* Install required conda environment as described in `<b>`Requirements`</b>` section
-* Download the dataset and required checkpoints as described in `<b>`Dataset`</b>` and `<b>`Checkpoints`</b>` section.
+* Install required conda environment as described in **Requirements** section
+* Download the dataset and required checkpoints as described in **Dataset** and **Checkpoints** section.
 
 ### Directly Read the Outputs
 
