@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="3D-MoLM: Towards 3D Molecule-Text Interpretation in Language Models">
+    <meta name="keywords" content="3D molecule-to-text generation, Large Language Models, AI for Science">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3D-MoLM</title>
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+    <!-- <link rel="icon" href="./static/images/logo.png"> -->
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="stylesheet" href="./static/css/index-gradio.css">
+    <link rel="stylesheet" href="./static/css/live_theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title"
+                        style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-bottom: 5px;">3D-MoLM:</h1>
+                    <h1 class="title is-2 publication-title">Towards 3D Molecule-Text Interpretation in Language Models</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">Sihang Li<sup>1</sup>*,</span>
+                        <span class="author-block"><a href="https://acharkq.github.io/">Zhiyuan Liu</a><sup>2</sup>*,</span>
+                        <span class="author-block">Yanchen Luo<sup>1</sup>,</span>
+                        <span class="author-block"><a href="https://xiangwang1223.github.io/">Xiang Wang</a><sup>1</sup>†,</span>
+                        <span class="author-block"><a href="https://hexiangnan.github.io/">Xiangnan He</a><sup>1</sup>†,</span>
+                        <span class="author-block"><a href="https://ml.comp.nus.edu.sg/">Kenji Kawaguchi</a><sup>2</sup>,</span>
+                        <span class="author-block"><a href="https://www.chuatatseng.com/">Tat-Seng Chua</a><sup>2</sup>,</span>
+                        <span class="author-block">Qi Tian<sup>3</sup></span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors" style="margin-top: 10px;">
+                        <span class="author-block">1: University of Science and Technology of China</span>,
+                        <span class="author-block">2: National University of Singapore</span>,
+                        <span class="author-block">3: Huawei Cloud</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block" style="font-size: 15px;"><sup>*</sup>Equal Contribution      </span>
+                        <span class="author-block" style="font-size: 15px;">      <sup>†</sup>Correspondence</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+                            <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-laugh"></i>
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/lsh0520/3D-MoLM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+
+                            <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- <section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-2">Video Presentation</h2>
+                <div class="publication-video">
+                    <iframe src="https://www.youtube.com/embed/aqw2SCWeWD0?si=jIKgOkew2rmRROUy"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-2">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Language Models (LMs) have greatly influenced diverse domains. However, their inherent limitation in comprehending 3D molecular structures has considerably constrained their potential in the biomolecular domain. To bridge this gap, we focus on 3D molecule-text interpretation, and propose <b>3D-MoLM</b>: <u>3D</u>-<u>Mo</u>lecular <u>L</u>anguage <u>M</u>odeling. Specifically, 3D-MoLM enables an LM to interpret and analyze 3D molecules by equipping the LM with a 3D molecular encoder. This integration is achieved by a 3D molecule-text projector, bridging the 3D molecular encoder's representation space and the LM's input space. Moreover, to enhance 3D-MoLM's ability of cross-modal molecular understanding and instruction following, we meticulously curated a 3D molecule-centric instruction tuning dataset -- <b>3D-MoIT</b>. Through 3D molecule-text alignment and 3D molecule-centric instruction tuning, 3D-MoLM establishes an integration of 3D molecular encoder and LM. It significantly surpasses existing baselines on downstream tasks, including molecule-text retrieval, molecule captioning, and more challenging open-text molecular QA tasks, especially focusing on 3D-dependent properties.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <br>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+        <h2 class="title is-2">Framework</h2>
+        <br>
+    </div>
+
+        <!-- Architecture -->
+    <div class="columns is-centered">
+        <div class="column is-full-width">
+            <div class="content has-text-justified">
+                <img class="columns is-centered has-text-centered framework" src="./figures/framework.png" alt="Teaser" width="100%"
+                     style="margin:0 auto">
+                <br>
+                <p>
+                <ul>
+                    <li>
+                        3D-MoLM is a <b>versatile</b> molecular LM that can be applied for molecule-text retrieval, molecule captioning, and molecule question-answering tasks.
+                    </li>
+                    <li>
+                        3D-MoLM employs a 3D molecule-text <b>projector</b> to bridge the modality gap between a 3D molecular encoder and an LM, enabling the LM to <b>perceive 3D molecular structures</b>.
+                    </li>
+                </ul>
+                </p>
+                <br>
+            </div>
+            <br/>
+
+        </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+        <h2 class="title is-2">Training Pipeline</h2>
+        <br>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column is-full-width">
+            <div class="content has-text-justified">
+                <img class="columns is-centered has-text-centered framework" src="./figures/train_pipeline.png" alt="Teaser" width="100%"
+                     style="margin:0 auto">
+                <br>
+                <p>
+                    To tackle the two challenges of <b>3D molecule-text alignment</b> and <b>3D molecule-centric instruction tuning</b>, we delineate a three-stage training pipeline for 3D-MoLM, including 1) 3D molecule-text representation learning, 2) 3D molecule-text alignment via text generation, and 3) instruction-based fine-tuning.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h5 class="title is-5">3D Molecule-Text Alignment</h5>
+                3D Molecule-Text Alignment maps 3D molecular representations into the input textual space where the LM can understand.
+                <div class="content has-text-justified">
+                    <p>
+                    <ul>
+                        <li>
+                            <b>Data Preparation – PubChem.</b> We collect molecular SMILES-text pairs from PubChem, and further employ GPT-3.5 to enrich the less annotated molecular descriptions. Molecular 3D conformations are obtained by running the MMFF algorithm in RDKit. As a result, 316K 3D molecule-text pairs are obtained for the alignment pretraining and downstream tasks of molecule-text retrieval and molecule captioning.
+                        </li>
+                        <li>
+                            <b><span>Stage 1</span>: 3D Molecule-Text Representation Learning</b> cultivates Q-Former’s ability to extract molecular features that resonate profoundly with the corresponding tex</li>
+                        <li>
+                            <b><span>Stage 2</span>: 3D Molecule-Text Alignment via Generative Learning</b> connect the Q-Former with the LM to leverage the LM’s language generation capability, where the molecular representations extracted by the Q-Former serve as 1D soft prompts comprehensible to the LM.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h5 class="title is-5">3D Molecule-centric Instruction Tuning</h5>
+                3D Molecule-centric Instruction Tuning fine-tunes the model to follow human instructions on 3D molecule relevant tasks.
+                <div class="content has-text-justified">
+                    <p>
+                    <ul>
+                        <li>
+                            <b>Data Preparation – 3D-MoIT.</b> We construct 3D-MoIT by sourcing data from the PubChem and PubChemQC databases, including both computed molecular properties and descriptive texts that characterize molecule properties in numerical values and free texts, respectively.
+                        </li>
+                        <li>
+                            <b><span>Stage 3</span>: Instruction-based Fine-tuning</b> enhances the ability to follow various instructions and improves the understanding of 3D molecular structures, especially in recognizing 3D-dependent properties
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <div class="columns is-centered has-text-centered">
+            <h2 class="title is-2">Demonstrations</h2>
+            <br>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <!--        <h2 class="title is-3">Generated Images</h2>-->
+                <br/>
+                <!--            Example-1-->
+                <h3 class="title is-4">• Example-1: Molecule Captioning</h3>
+                <div class="content has-text-justified">
+
+                    <div class="wrapper svelte-nab2ao"
+                         style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                        <div class="message-wrap svelte-1uvwjgr">
+
+                            <div class="message-row user-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png" alt="avatar-user">
+                                </div>
+                                <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                        <img class="columns is-centered has-text-centered molecule" src="./figures/cap-molecule-1.png" alt="mol1" style="height: 100px;">
+                                        <p>Describe the input molecule.</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="message-row bot-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png" alt="avatar-bot"></div>
+                                <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                      <p>Globostellatic acid B is a tricyclic triterpenoid with formula C34H48O6, originally isolated from Globostellata. It has a role as a metabolite. It is a tricyclic triterpenoid, a monocarboxylic acid and an acetate ester. Globostellatic acid B is a natural product found in Globostellata with data available.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--          End  Example-1-->
+
+                <!--            Example-2-->
+                <h3 class="title is-4">• Example-2: Open-text QA</h3>
+                <div class="content has-text-justified">
+
+                    <div class="wrapper svelte-nab2ao"
+                         style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                        <div class="message-wrap svelte-1uvwjgr">
+
+                            <div class="message-row user-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png" alt="avatar-user">
+                                </div>
+                                <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                        <img class="columns is-centered has-text-centered molecule" src="./figures/desc-molecule-1.png" alt="mol2" style="height: 100px;">
+                                        <p>What are the physical properties of beryllium acetate?</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="message-row bot-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png" alt="avatar-bot"></div>
+                                <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                      <p>On the physical properties of beryllium acetate, it is a white crystalline solid that is soluble in water. It has a relatively high melting point and boiling point due to the strong intermolecular forces between the beryllium and acetate.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--          End  Example-2-->
+
+                <!--            Example-3-->
+                <h3 class="title is-4">• Example-3: Computed Property QA</h3>
+                <div class="content has-text-justified">
+
+                    <div class="wrapper svelte-nab2ao"
+                         style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                        <div class="message-wrap svelte-1uvwjgr">
+
+                            <div class="message-row user-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png" alt="avatar-user">
+                                </div>
+                                <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                        <img class="columns is-centered has-text-centered molecule" src="./figures/comp-molecule-1.png" alt="mol2" style="height: 100px;">
+                                        <p>Could you give me the HOMO-LUMO Gap value of this molecule? If uncertain, provide an estimate. Respond with the numerical value only.</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="message-row bot-row svelte-1uvwjgr">
+                                <div class="avatar-container svelte-1uvwjgr">
+                                    <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png" alt="avatar-bot"></div>
+                                <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr" style="border-style: solid;">
+                                    <span class="md svelte-9tftx4 chatbot">
+                                      <p>The HOMO-LUMO Gap for the input molecule is 5.762 eV.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--          End  Example-2-->
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">Related Links</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        This work partially draws inspiration from <a href="https://github.com/salesforce/LAVIS">the BLIP family</a>,
+                        <a href="https://github.com/blender-nlp/MolT5">MolT5</a>, and
+                        <a href="https://github.com/thunlp/KV-PLM">KV-PLM</a>.
+                        This website is inspired by <a href="https://next-gpt.github.io/">NExT-GPT</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!--<section class="section" id="BibTeX">-->
+<!--    <div class="container is-max-desktop content">-->
+<!--        <h2 class="title">BibTeX</h2>-->
+<!--        <pre><code>@inproceedings{liu2023molca,-->
+<!--    title={MolCA: Molecular Graph-Language Modeling with Cross-Modal Projector and Uni-Modal Adapter},-->
+<!--    author={Liu, Zhiyuan and Li, Sihang and Luo, Yanchen and Fei, Hao and Cao, Yixin and Kawaguchi, Kenji and Wang, Xiang and Chua, Tat-Seng},-->
+<!--    booktitle={EMNLP},-->
+<!--    year={2023},-->
+<!--    url={https://openreview.net/forum?id=14WRhMNq7H}-->
+<!--}-->
+<!--</code></pre>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p style="text-align: center;">
+                        The webpage is built based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
