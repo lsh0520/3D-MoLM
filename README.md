@@ -4,7 +4,11 @@ Codes of our ICLR'24 paper. [[Paper Link]()], [[Website](https://lsh0520.github.
 
 Authors: Sihang Li*, Zhiyuan Liu*, Yanchen Luo, Xiang Wang†, Xiangnan He†, Kenji Kawaguchi, Tat-Seng Chua, Qi Tian
 
-\* Equal Contribution    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  † Corresponding
+\* Equal Contribution    
+
+<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   -->
+
+† Corresponding
 
 ## Framework
 
@@ -133,7 +137,7 @@ bash ./scripts/stage3_train.sh
 If you use our codes or checkpoints, please cite our paper:
 
 ```bib
-@inproceedings{li2024iclr,
+@inproceedings{li2024molm,
     title={3D-MoLM: Towards 3D Molecule-Text Interpretation in Language Models},
     author={Li, Sihang and Liu, Zhiyuan and Luo, Yanchen and Wang, Xiang and He, Xiangnan and Kawaguchi, Kenji  and Chua, Tat-Seng and Tian, Qi},
     booktitle={ICLR},
