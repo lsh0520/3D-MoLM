@@ -4,9 +4,9 @@ Codes of our ICLR'24 paper. [[Paper Link](https://arxiv.org/abs/2401.13923)], [[
 
 Authors: Sihang Li*, Zhiyuan Liu*, Yanchen Luo, Xiang Wang†, Xiangnan He†, Kenji Kawaguchi, Tat-Seng Chua, Qi Tian
 
-\* Equal Contribution    
+\* Equal Contribution
 
-<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   -->
+<!--            -->
 
 † Corresponding
 
@@ -64,11 +64,17 @@ To tackle the two challenges of **3D molecule-text alignment** and **3D molecule
 
 ## Requirements
 
-See `requirements.txt`. Run the following command to create a new anaconda environment `3D-MoLM`:
+Key dependencies include:
 
 ```bash
-pip install -r requirements.txt
+torch==2.0.1
+transformers==4.35.0
+deepspeed==0.12.2
+pytorch-lightning==2.0.7
+uni-core==0.0.1
 ```
+
+See `requirements.txt` for more detailed requirements.
 
 ## Dataset
 
@@ -78,8 +84,12 @@ pip install -r requirements.txt
 
 * **3D-MoLM**. Download the LoRA checkpoints from [Huggingface-3D-MoLM](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
 * **Uni-Mol**. Download the checkpoint from [Huggingface-Uni-Mol](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
-* **SciBERT**. Download the checkpoint from [Huggingface-scibert](https://huggingface.co/allenai/scibert_scivocab_uncased), and put it under the `./all_checkpoints/` directory.
-* **Llama2-7B**. Download the checkpoint from [Huggingface-Llama](https://huggingface.co/meta-llama/Llama-2-7b-hf), and put it under the `./all_checkpoints/` directory.
+* **SciBERT**. Download the checkpoint from [Huggingface-scibert](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
+* **Llama2-7B**. Download the checkpoint from [Huggingface-Llama](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
+
+## Inference
+
+Run `inference.ipynb` to play with 3D-MoLM.
 
 ## Reproduce the results
 
