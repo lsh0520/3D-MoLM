@@ -82,10 +82,12 @@ See `requirements.txt` for more detailed requirements.
 
 ## Checkpoints
 
-* **3D-MoLM**. Download the LoRA checkpoints from [Huggingface-3D-MoLM](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
-* **Uni-Mol**. Download the checkpoint from [Huggingface-Uni-Mol](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
-* **SciBERT**. Download the checkpoint from [Huggingface-scibert](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
-* **Llama2-7B**. Download the checkpoint from [Huggingface-Llama](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
+Download following checkpoints from [Huggingface-3D-MoLM](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
+
+* **3D-MoLM**
+* **Uni-Mol**
+* **SciBERT**
+* **Llama2-7B**
 
 ## Inference
 
