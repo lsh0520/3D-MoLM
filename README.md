@@ -1,6 +1,6 @@
 # 3D-MoLM: Towards 3D Molecule-Text Interpretation in Language Models
 
-Codes of our ICLR'24 paper. [[Paper Link](https://arxiv.org/abs/2401.13923)], [[Website](https://lsh0520.github.io/3D-MoLM/)], [[Demo]()]
+Codes of our ICLR'24 paper. [[Paper Link](https://arxiv.org/abs/2401.13923)], [[Website](https://lsh0520.github.io/3D-MoLM/)], [[Demo](https://5392def3bf3be3f70d.gradio.live)]
 
 Authors: Sihang Li*, Zhiyuan Liu*, Yanchen Luo, Xiang Wang†, Xiangnan He†, Kenji Kawaguchi, Tat-Seng Chua, Qi Tian
 
