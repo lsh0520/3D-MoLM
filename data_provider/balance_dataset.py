@@ -54,7 +54,7 @@ class BalanceDataset(Dataset):
                              "output": Value("string"),
                              "task": Value("string")})
 
-        if mode.find('pretrain') >= 0:
+        if mode.find('train') >= 0:
             ### load 3D computed properties instructions
             d3_data_paths = []
             for split in ['train']:
