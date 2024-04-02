@@ -25,7 +25,7 @@ class InstructDataset(Dataset):
             data_paths.append(split_path + '/2d_computed_properties_unit.json')
         elif mode.find('3d') >= 0:
             data_paths.append(split_path + '/3d_computed_properties_unit.json')
-        elif mode.find('pretrain') >= 0:
+        elif mode.find('train') >= 0:
             data_paths.append(split_path + '/descriptive_properties.json')
             data_paths.append(split_path + '/2d_computed_properties_unit.json')
             data_paths.append(split_path + '/3d_computed_properties_unit.json')
@@ -70,7 +70,7 @@ class InstructDataset(Dataset):
             for i, text_name in enumerate(self.graph_name_list):
                 self.cid_idx_dict[getcid_from_name(text_name)] = i
 
-        if mode.find('3d') >= 0 or mode.find('pretrain') >= 0:
+        if mode.find('3d') >= 0 or mode.find('train') >= 0:
             ### load PubChemQC 3D conformations
             target_path = os.path.join(root, 'molecule3d_database.lmdb')
             self.pubchem_3d_property_dataset = D3Dataset_cid(target_path, unimol_dict, max_atoms)
