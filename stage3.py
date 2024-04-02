@@ -76,7 +76,7 @@ def main(args):
         logger=logger,
     )
 
-    if args.mode.find('pretrain') >= 0:
+    if args.mode.find('train') >= 0:
         trainer.fit(model, datamodule=dm)
         trainer.test(model, datamodule=dm)
     elif args.mode.find('eval') >= 0:
