@@ -76,7 +76,7 @@ class InferenceCollater:
 class Stage3DM(LightningDataModule):
     def __init__(
             self,
-            mode: str = 'pretrain',
+            mode: str = 'train',
             num_workers: int = 0,
             batch_size: int = 256,
             root: str = 'data/',
@@ -95,8 +95,8 @@ class Stage3DM(LightningDataModule):
         self.dictionary = dictionary
 
         if mode.find('pretrain') >= 0:
-            self.pretrain_dataset = BalanceDataset(root, 'pretrain', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
-            self.pretrain_dataset.tokenizer = tokenizer
+            self.train_dataset = BalanceDataset(root, 'pretrain', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
+            self.train_dataset.tokenizer = tokenizer
             self.val_dataset = UniformDataset(root, 'valid', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
             self.val_dataset.tokenizer = tokenizer
         elif mode.find('eval') >= 0:
@@ -110,7 +110,7 @@ class Stage3DM(LightningDataModule):
 
     def train_dataloader(self):
         loader = DataLoader(
-            self.pretrain_dataset,
+            self.train_dataset,
             batch_size=self.batch_size,
             shuffle=True,
             num_workers=self.num_workers,
