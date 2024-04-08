@@ -82,9 +82,15 @@ See `requirements.txt` for more detailed requirements.
 
 ## Checkpoints
 
+![1712575984929](figures/pipeline.png)
+
 Download following checkpoints from [Huggingface-3D-MoLM](https://huggingface.co/Sihangli/3D-MoLM), and put it under the `./all_checkpoints/` directory.
 
 * **3D-MoLM**
+  * stage1-ckpt
+  * stage1-ft-ckpt
+  * stage2-ckpt
+  * generalist-ckpt
 * **Uni-Mol**
 * **SciBERT**
 * **Llama2-7B**
@@ -101,6 +107,12 @@ Run `inference.ipynb` to play with 3D-MoLM.
 * Download the dataset and required checkpoints as described in **Dataset** and **Checkpoints** section.
 
 ### Directly Read the Outputs
+
+#### Retrieval Results (Table 2)
+
+See the  log in `all_checkpoints/stage1-ft-ckpt/metrics.csv`
+
+#### Captioning&QA Results (Table 3&4)
 
 We provide the outputs of 3D-MoLM on the test set of 3D-MoIT in `all_checkpoints/generalist/lightning_logs/version_0/predictions.txt`. Run the following script to read it.
 
