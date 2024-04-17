@@ -1,5 +1,4 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '4,5,6,7'
 import torch
 import argparse
 import warnings
