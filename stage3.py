@@ -1,5 +1,4 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '4,5,6,7'
 import torch
 import argparse
 import warnings
@@ -94,7 +93,7 @@ def get_args():
     parser.add_argument('--strategy_name', type=str, default='deepspeed')
     parser.add_argument('--use_3d', action='store_true', default=True)
     parser.add_argument('--accelerator', type=str, default='gpu')
-    parser.add_argument('--devices', type=str, default='0,1')
+    parser.add_argument('--devices', type=str, default='0,1,2,3')
     parser.add_argument('--precision', type=str, default='bf16-mixed')
     # parser.add_argument('--max_epochs', type=int, default=1)
     parser.add_argument('--max_steps', type=int, default=40000)
