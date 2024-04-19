@@ -94,8 +94,8 @@ class Stage3DM(LightningDataModule):
         self.text_max_len = text_max_len
         self.dictionary = dictionary
 
-        if mode.find('pretrain') >= 0:
-            self.train_dataset = BalanceDataset(root, 'pretrain', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
+        if mode.find('train') >= 0:
+            self.train_dataset = BalanceDataset(root, 'train', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
             self.train_dataset.tokenizer = tokenizer
             self.val_dataset = UniformDataset(root, 'valid', unimol_dict=dictionary, max_atoms=args.unimol_max_atoms)
             self.val_dataset.tokenizer = tokenizer
